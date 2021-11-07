@@ -20,3 +20,7 @@ git で管理してもいいけど、個人的には肥大化しそうだしそ�
 
 https://github.com/google/google-api-javascript-client
 で OAuth2 を使う
+って思ったけど ↓ のほうが良さそう
+https://github.com/googleapis/google-auth-library-nodejs
+
+https://cloud.google.com/nodejs/docs/reference/google-auth-library/latest
