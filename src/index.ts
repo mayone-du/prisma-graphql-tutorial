@@ -26,7 +26,13 @@ const resolvers = {
 };
 
 const schemaWithResolvers = addResolversToSchema({ schema, resolvers });
-const server = new ApolloServer({ schema: schemaWithResolvers });
+const server = new ApolloServer({ 
+  schema: schemaWithResolvers,
+  cors: true,
+  context: async (ctx) => {
+    const token = ctx.req.headers.authorization?.replace('Bearer ', '');
+    // TODO: verify token
+} });
 
 server.listen().then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
