@@ -4,6 +4,7 @@ import { addResolversToSchema } from '@graphql-tools/schema';
 import { ApolloServer } from 'apollo-server';
 import { OAuth2Client } from 'google-auth-library';
 import { join } from 'path';
+import { addTodo } from './resolvers/mutation/addTodo';
 
 const schema = loadSchemaSync(join(__dirname, '../schema.graphql'), {
   loaders: [new GraphQLFileLoader()],
@@ -11,8 +12,10 @@ const schema = loadSchemaSync(join(__dirname, '../schema.graphql'), {
 
 const resolvers = {
   Query: {
-    addTodo: () => null,
   },
+  Mutation: {
+    addTodo: addTodo,
+  }
 };
 
 const schemaWithResolvers = addResolversToSchema({ schema, resolvers });
@@ -21,10 +24,10 @@ const server = new ApolloServer({
   schema: schemaWithResolvers,
   cors: true,
   context: async (ctx) => {
-    const token = ctx.req.headers.authorization?.replace('Bearer ', '') ?? '';
-    // verify token
-    const tokenInfo = oAuth2Client.getTokenInfo(token);
-    console.log(tokenInfo);
+    // const token = ctx.req.headers.authorization?.replace('Bearer ', '') ?? '';
+    // // verify token
+    // const tokenInfo = oAuth2Client.getTokenInfo(token);
+    // console.log(tokenInfo);
 } });
 
 server.listen().then(({ url }) => {

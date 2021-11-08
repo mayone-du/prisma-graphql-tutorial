@@ -24,3 +24,17 @@ https://github.com/google/google-api-javascript-client
 https://github.com/googleapis/google-auth-library-nodejs
 
 https://cloud.google.com/nodejs/docs/reference/google-auth-library/latest
+
+### Note
+
+https://studio.apollographql.com/sandbox/explorer
+
+/prisma/schema.prisma で Table 定義などをする
+
+/src/resolvers リゾルバ定義
+
+/src/types/index.ts ルートリゾルバの定義
+
+/schema.graphql で GraphQL Schema を定義する
+
+DB が prisma, App が graphql
