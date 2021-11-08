@@ -9,20 +9,9 @@ const schema = loadSchemaSync(join(__dirname, '../schema.graphql'), {
   loaders: [new GraphQLFileLoader()],
 });
 
-const books = [
-  {
-    title: 'The Awakening',
-    author: 'Kate Chopin',
-  },
-  {
-    title: 'City of Glass',
-    author: 'Paul Auster',
-  },
-];
-
 const resolvers = {
   Query: {
-    books: () => books,
+    addTodo: () => null,
   },
 };
 
@@ -33,7 +22,7 @@ const server = new ApolloServer({
   cors: true,
   context: async (ctx) => {
     const token = ctx.req.headers.authorization?.replace('Bearer ', '') ?? '';
-    // TODO: verify token
+    // verify token
     const tokenInfo = oAuth2Client.getTokenInfo(token);
     console.log(tokenInfo);
 } });
