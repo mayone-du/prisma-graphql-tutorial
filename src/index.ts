@@ -2,6 +2,8 @@ import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader';
 import { loadSchemaSync } from '@graphql-tools/load';
 import { addResolversToSchema } from '@graphql-tools/schema';
 import { ApolloServer } from 'apollo-server';
+import cors from 'cors';
+import express from 'express';
 import { OAuth2Client } from 'google-auth-library';
 import { join } from 'path';
 import { addTodo } from './resolvers/mutation/addTodo';
@@ -29,6 +31,9 @@ const server = new ApolloServer({
     // const tokenInfo = oAuth2Client.getTokenInfo(token);
     // console.log(tokenInfo);
 } });
+
+const app = express();
+app.use(cors());
 
 server.listen().then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
