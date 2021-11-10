@@ -31,10 +31,10 @@ https://studio.apollographql.com/sandbox/explorer
 
 /prisma/schema.prisma で Table 定義などをする
 
+/schema.graphql で GraphQL Schema を定義する query, mutation の型定義のみしてあり、内容の詳細は後述する resolvers 内で定義する
+
 /src/resolvers リゾルバ定義
 
 /src/types/index.ts ルートリゾルバの定義
-
-/schema.graphql で GraphQL Schema を定義する
 
 DB が prisma, App が graphql
