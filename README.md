@@ -38,3 +38,7 @@ https://studio.apollographql.com/sandbox/explorer
 /src/types/index.ts ルートリゾルバの定義
 
 DB が prisma, App が graphql
+
+```
+npx prisma studio
+```

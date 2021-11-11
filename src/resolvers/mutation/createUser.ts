@@ -7,26 +7,9 @@ export const createUser: MutationResolvers['createUser'] = async (
   context,
   info
 ) => {
-  const userId = context.user?.id;
-  if (!userId) {
-    throw new Error('Authentication Error.');
-  }
-
-  const user = await prisma.user.findUnique({
-    where: {
-      id: userId,
-    },
-  });
-
-  if (user) {
-    throw new Error('Alredy exists user.');
-  }
-
-  const createdUser = await prisma.user.create({
-    data: {
-      id: userId,
-      name: args?.input?.name,
-    },
-  });
+  const createdUser = await prisma.user.create({data: {
+    id: args.id ?? "",
+    name: args.input?.name
+  }});
   return createdUser;
 };
